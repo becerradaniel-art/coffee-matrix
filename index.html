@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>Global Coffee Matrix</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23000'/%3E%3Cpath d='M6 22l6-6 4 4 10-10' fill='none' stroke='%230ECB81' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<main class="gate" id="gate">
+  <div class="gate-card">
+    <p class="gate-kicker">Labesera · Prepared for Covoya</p>
+    <h1>Global Coffee Matrix</h1>
+    <p>Enter the access code you were sent with this link.</p>
+    <form id="gate-form" autocomplete="off">
+      <input id="gate-code" type="text" inputmode="text" spellcheck="false" placeholder="xxxx-xxxx-xxxx-xxxx" aria-label="Access code">
+      <button type="submit">Open</button>
+    </form>
+    <p class="gate-msg" id="gate-msg" aria-live="polite"></p>
+  </div>
+</main>
+
+<div id="dash-root" hidden>
+<div class="cm">
+  <header class="cm-top">
+    <div class="cm-brandbar">
+      <p class="cm-mono">Labesera</p>
+      <p class="cm-mono">Prepared for Covoya</p>
+    </div>
+    <div class="cm-titlerow">
+      <div><h1 class="cm-title" id="title">Global Coffee Matrix</h1></div>
+    </div>
+  </header>
+
+  <section id="dashboard" class="cm-page">
+    <aside class="cm-news" id="latest" aria-label="Headline from the matrix in view">
+      <span class="cm-news-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h13v13a2 2 0 0 0 2 2H6a2 2 0 0 1-2-2z"/><path d="M17 9h3v9a2 2 0 0 1-2 2"/><path d="M7 8.5h7M7 12h7M7 15.5h4"/></svg></span>
+      <div class="cm-news-body">
+        <p class="cm-news-tag"><i aria-hidden="true"></i><span data-draw="newsTag">—</span></p>
+        <p class="cm-lede" id="lede">On the <span data-draw="ledeDate">—</span> matrix, <span data-draw="ledeBest">—</span> carries the highest differential at <b data-draw="ledeBestDiff">—</b> ¢/lb. Differentials run from <b data-draw="ledeMin">—</b> to <b data-draw="ledeMax">—</b> across <b data-draw="ledeOrigins">—</b> origins.</p>
+        <p class="cm-lede" id="lede-empty" hidden>No coffees match these filters. Clear the search, or pick another region or process.</p>
+        <p class="cm-lede" id="lede-none" hidden>No matrix is on file yet.</p>
+      </div>
+    </aside>
+
+    <div class="cm-filters" role="group" aria-label="Filters">
+      <div class="cm-seg" id="f-region" role="group" aria-label="Region">
+        <button type="button" data-v="" aria-pressed="true">All origins</button>
+        <button type="button" data-v="Latin America &amp; the Caribbean" aria-pressed="false">Latin America &amp; the Caribbean</button>
+        <button type="button" data-v="Africa &amp; the Middle East" aria-pressed="false">Africa &amp; the Middle East</button>
+        <button type="button" data-v="Asia &amp; Pacific Islands" aria-pressed="false">Asia &amp; Pacific Islands</button>
+      </div>
+      <label class="cm-field"><span>Process</span><select class="dash-select" data-draw="processSel" aria-label="Process"></select></label>
+      <label class="cm-field"><span>Matrix</span><select class="dash-select" data-draw="asOfSel" aria-label="Matrix date"></select></label>
+      <input class="cm-search" type="search" id="f-q" placeholder="Search grade or origin" aria-label="Search grade or origin">
+      <button type="button" class="cm-link" id="f-reset" hidden>Clear filters</button>
+    </div>
+
+    <div class="cm-tiles">
+      <article class="cm-tile" id="tile-best">
+        <h2 class="cm-tile-label"><span class="cm-tile-ico cm-ti-up" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></span>Best performing coffee</h2>
+        <p class="cm-tile-fig"><span data-draw="bestDiff">—</span><span class="cm-unit">¢/lb</span></p>
+        <p class="cm-tile-name" data-draw="bestName">—</p>
+        <p class="cm-tile-sub" data-draw="bestSub">—</p>
+      </article>
+      <article class="cm-tile" id="tile-lowest">
+        <h2 class="cm-tile-label"><span class="cm-tile-ico cm-ti-down" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l6 6 4-4 8 8"/><path d="M14 17h7v-7"/></svg></span>Lowest performing coffee</h2>
+        <p class="cm-tile-fig"><span data-draw="lowDiff">—</span><span class="cm-unit">¢/lb</span></p>
+        <p class="cm-tile-name" data-draw="lowName">—</p>
+        <p class="cm-tile-sub" data-draw="lowSub">—</p>
+      </article>
+      <article class="cm-tile" id="tile-trend">
+        <h2 class="cm-tile-label"><span class="cm-tile-ico cm-ti-trend" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></span>Price differential trend</h2>
+        <p class="cm-tile-fig"><span data-draw="avgDiff">—</span><span class="cm-unit">¢/lb average</span></p>
+        <p class="cm-tile-sub" id="trend-move" hidden><span class="cm-chg" data-draw="avgChange">—</span> ¢/lb like-for-like since <span data-draw="prevDate">—</span></p>
+        <p class="cm-tile-sub" id="trend-first">First matrix on file. Movement shows once the next one is added.</p>
+        <div class="cm-spark" data-draw="spark"></div>
+      </article>
+    </div>
+
+    <div class="cm-mainbar">
+      <h2 class="cm-h2" id="explore">Explore the matrix</h2>
+      <div class="cm-seg" id="f-layout" role="group" aria-label="Panels">
+        <button type="button" data-v="1" aria-pressed="false">One panel</button>
+        <button type="button" data-v="2" aria-pressed="true">Two panels</button>
+      </div>
+    </div>
+
+    <div class="cm-panels" id="panels">
+      <section class="cm-panel" id="panel-a" data-panel="a" aria-label="Panel A">
+        <div class="cm-panel-head">
+          <select class="dash-select cm-viewsel" aria-label="View for panel A">
+            <option value="map">Coffee-belt map</option>
+            <option value="matrix">Matrix heatmap</option>
+            <option value="rank">Ranked table</option>
+            <option value="regions">Region comparison</option>
+            <option value="trend">Trend</option>
+          </select>
+          <div class="cm-seg cm-metric" role="group" aria-label="Shade origins by">
+            <button type="button" data-v="top" aria-pressed="true">Top grade</button>
+            <button type="button" data-v="avg" aria-pressed="false">Average</button>
+          </div>
+          <div class="cm-seg cm-zoom" role="group" aria-label="Zoom the matrix" hidden>
+            <button type="button" data-z="out" aria-label="Zoom out">−</button>
+            <input type="range" class="cm-zrange" min="10" max="160" step="1" value="100" aria-label="Matrix zoom" aria-valuetext="100%">
+            <button type="button" data-z="in" aria-label="Zoom in">+</button>
+            <button type="button" data-z="fit" aria-pressed="false">Fit</button>
+            <button type="button" data-z="reset" aria-pressed="true">100%</button>
+          </div>
+        </div>
+        <div class="cm-view" data-view="map">
+          <div class="cm-map" data-draw="map"></div>
+          <h3 class="cm-h3">Origins by top differential</h3>
+          <ol class="cm-origins" data-draw="origins"></ol>
+        </div>
+        <div class="cm-view" data-view="matrix" hidden>
+          <div class="cm-ladder-wrap"><table class="cm-ladder" data-draw="matrix"></table></div>
+        </div>
+        <div class="cm-view" data-view="rank" hidden>
+          <div class="cm-scroll"><table class="cm-rank"><thead><tr><th scope="col" class="num">#</th><th scope="col" data-sort="grade">Grade</th><th scope="col" data-sort="country">Origin</th><th scope="col" data-sort="process">Process</th><th scope="col" class="num" data-sort="diff" aria-sort="descending">Diff ¢/lb</th><th scope="col" class="num" data-sort="change">Change</th></tr></thead><tbody data-draw="rank"></tbody></table></div>
+        </div>
+        <div class="cm-view" data-view="regions" hidden>
+          <div class="cm-regions" data-draw="regions"></div>
+        </div>
+        <div class="cm-view" data-view="trend" hidden>
+          <div class="cm-trend" data-draw="trend"></div>
+          <p class="cm-note cm-trend-first">Only one matrix is on file, so each region shows a single point. Lines appear as new matrices are added.</p>
+          <div class="cm-movers-wrap" hidden>
+            <h3 class="cm-h3">Biggest moves since the previous matrix</h3>
+            <ol class="cm-movers" data-draw="movers"></ol>
+          </div>
+        </div>
+        <div class="cm-legend" data-draw="legend" aria-label="Differential colour key"></div>
+      </section>
+
+      <section class="cm-panel" id="panel-b" data-panel="b" aria-label="Panel B">
+        <div class="cm-panel-head">
+          <select class="dash-select cm-viewsel" aria-label="View for panel B">
+            <option value="map">Coffee-belt map</option>
+            <option value="matrix">Matrix heatmap</option>
+            <option value="rank">Ranked table</option>
+            <option value="regions">Region comparison</option>
+            <option value="trend">Trend</option>
+          </select>
+          <div class="cm-seg cm-metric" role="group" aria-label="Shade origins by">
+            <button type="button" data-v="top" aria-pressed="true">Top grade</button>
+            <button type="button" data-v="avg" aria-pressed="false">Average</button>
+          </div>
+          <div class="cm-seg cm-zoom" role="group" aria-label="Zoom the matrix" hidden>
+            <button type="button" data-z="out" aria-label="Zoom out">−</button>
+            <input type="range" class="cm-zrange" min="10" max="160" step="1" value="100" aria-label="Matrix zoom" aria-valuetext="100%">
+            <button type="button" data-z="in" aria-label="Zoom in">+</button>
+            <button type="button" data-z="fit" aria-pressed="false">Fit</button>
+            <button type="button" data-z="reset" aria-pressed="true">100%</button>
+          </div>
+        </div>
+        <div class="cm-view" data-view="map" hidden>
+          <div class="cm-map" data-draw="map"></div>
+          <h3 class="cm-h3">Origins by top differential</h3>
+          <ol class="cm-origins" data-draw="origins"></ol>
+        </div>
+        <div class="cm-view" data-view="matrix">
+          <div class="cm-ladder-wrap"><table class="cm-ladder" data-draw="matrix"></table></div>
+        </div>
+        <div class="cm-view" data-view="rank" hidden>
+          <div class="cm-scroll"><table class="cm-rank"><thead><tr><th scope="col" class="num">#</th><th scope="col" data-sort="grade">Grade</th><th scope="col" data-sort="country">Origin</th><th scope="col" data-sort="process">Process</th><th scope="col" class="num" data-sort="diff" aria-sort="descending">Diff ¢/lb</th><th scope="col" class="num" data-sort="change">Change</th></tr></thead><tbody data-draw="rank"></tbody></table></div>
+        </div>
+        <div class="cm-view" data-view="regions" hidden>
+          <div class="cm-regions" data-draw="regions"></div>
+        </div>
+        <div class="cm-view" data-view="trend" hidden>
+          <div class="cm-trend" data-draw="trend"></div>
+          <p class="cm-note cm-trend-first">Only one matrix is on file, so each region shows a single point. Lines appear as new matrices are added.</p>
+          <div class="cm-movers-wrap" hidden>
+            <h3 class="cm-h3">Biggest moves since the previous matrix</h3>
+            <ol class="cm-movers" data-draw="movers"></ol>
+          </div>
+        </div>
+        <div class="cm-legend" data-draw="legend" aria-label="Differential colour key"></div>
+      </section>
+    </div>
+
+    <details class="cm-notes">
+      <summary>How the numbers are worked out</summary>
+      <dl>
+        <dt>Differential</dt><dd>The premium (+) or discount (−) to the ICE “C” Arabica futures price, in US cents per pound, exactly as given in the Diff columns of the matrix.</dd>
+        <dt>Best and lowest performing</dt><dd>The grades with the highest and lowest differential among the coffees currently selected. When several grades share the lowest or highest value, the tile says how many.</dd>
+        <dt>Average and trend</dt><dd>The average is a plain mean of every selected grade’s differential. The change compares like for like: only grades quoted in both this matrix and the one before it.</dd>
+        <dt>Regions</dt><dd>The matrix’s LATAM and CAM columns make up Latin America &amp; the Caribbean, Africa makes up Africa &amp; the Middle East, and APAC makes up Asia &amp; Pacific Islands.</dd>
+        <dt>Matrix</dt><dd>Differentials run down the side in 10 ¢/lb bands, and each region, origin and process (W washed, SD sun-dried) has a column, in the spreadsheet’s order. Each grade sits in the band its differential falls in, so you can compare across origins at a glance.</dd>
+        <dt>Colour</dt><dd>Green above New York, red below, slate at par. Each side runs to its own extreme in view, so the brightest green is the highest differential and the brightest red the lowest. It rescales when you filter. A matrix cell holding several grades takes the colour of their average.</dd>
+        <dt>Map</dt><dd>Each origin is shaded by its top grade’s differential, or by the average of its grades. Small origins also get a dot. Click an origin to filter the dashboard to it.</dd>
+      </dl>
+    </details>
+  </section>
+
+  <footer class="cm-foot">
+    <p class="cm-mono">Labesera</p>
+    <p class="cm-mono">Test copy · Prepared for Covoya</p>
+  </footer>
+</div>
+</div>
+
+<script src="vendor/d3.v7.min.js"></script>
+<script src="js/dash.js"></script>
+<script src="js/cm-base.js"></script>
+<script src="js/app.js"></script>
+<script src="js/gate.js"></script>
+</body>
+</html>
